@@ -1,4 +1,16 @@
-class Voiture:
+from abc import ABC, abstractmethod
+
+class Vehicule(ABC):
+    def drive(self) -> str:
+        return "the vehicule is on its wheels!"
+
+    @property
+    @abstractmethod
+    def prix(self):
+        pass
+
+
+class Voiture(Vehicule):
     def __init__(self, marque, couleur, prix, reduction_applicable):
         self.marque = marque
         self.couleur = couleur
