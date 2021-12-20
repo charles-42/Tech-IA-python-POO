@@ -1,9 +1,8 @@
 from class_to_test import Voiture, Vehicule
-import pytest
 # Tester une classe correspond à tester chacune de ses méthodes.
 # Pour cela on crée une classe de test dont le nom commence par Test 
 # Chacun de ses méthodes permettra de tester les méthodes de la classe à tester
-
+import pytest
 
 class TestVoiture:
     
@@ -20,7 +19,15 @@ class TestVoiture:
         assert Voiture("toyota","rouge",20000,0.1).prix == 20000
         with pytest.raises(ValueError) :
             Voiture("toyota","rouge","20000",0.1)
+    
+    def test_I_want_to_quit(self, monkeypatch):
+        def no_func(x):
+            pass
+        #monkeypatch.setattr("class_to_test.Voiture.fonction_sans_fin",no_func)
+        monkeypatch.setattr(Voiture, "fonction_sans_fin",no_func)
+        #monkeypatch.delattr(Voiture, "fonction_sans_fin") (ne marche pas)
 
+        assert Voiture("toyota","rouge",20000,0.1).I_want_to_quit() == "I quit"
 
 # Je dois créer trois fois ma voiture. C'est plutot embettant. 
 
@@ -45,6 +52,7 @@ class TestVoiture2():
         assert voiture_test.prix == 20000
         with pytest.raises(ValueError) :
             Voiture("toyota","rouge","20000",0.1)
+
 
 
 # Test an abstract class:

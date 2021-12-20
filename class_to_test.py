@@ -41,3 +41,11 @@ class Voiture(Vehicule):
     
     def prix_apres_triple_reduction(self):
         return self.prix * (1 - 3*self.reduction_applicable)
+
+    def fonction_sans_fin(self):
+        while True:
+            print("sans fin!")
+
+    def I_want_to_quit(self):
+        self.fonction_sans_fin()
+        return "I quit"
